@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+
+var a=angular.module("myApp",[]);
+        a.controller('myController',function($scope,myservice){
+            $scope.mydata=myservice.factorial(5);
+            $scope.resultadd=myservice.add(10,2);
+            $scope.resultsub=myservice.sub(10,2);
+        });
+
+        a.factory("hello",function(){
+           var myfactoryfunctions={};
+           myfactoryfunctions.fact=function(a){
+               ans=1;
+               for(i=a;i>0;i--){
+                   ans=ans*i;
+               }
+               return ans;
+           }
+           myfactoryfunctions.add=function(a,b){
+              return a+b;
+           }
+           myfactoryfunctions.sub=function(a,b){
+               return a-b;
+           }
+
+           return myfactoryfunctions;
+       });
+        a.service('myservice',function (hello) { 
+            this.factorial=function(num){
+                return hello.fact(num);
+            }
+            this.add=function(a,b){
+                return hello.add(a,b);
+            }
+            this.sub=function(a,b){
+                return hello.sub(a,b);
+            }
+         });
+
+       
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>ANGULAR Services</h2>
+      
+    <div ng-app="myApp" ng-controller="myController">
+
+<p>{{mydata}}</p>
+<p>{{resultadd}}</p>
+<p>{{resultsub}}</p>
+       
+    </div>
+</div>
+</body>
+</html>

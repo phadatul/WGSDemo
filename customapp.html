@@ -1,0 +1,38 @@
+</head>
+
+<body>
+
+    <script src="https://code.angularjs.org/1.6.9/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <h1> Demo Hello</h1>
+
+    <div ng-app="DemoApp">
+        <outer></outer>
+    </div>
+
+    <script type="text/javascript">
+        var app = angular.module('DemoApp', []);
+
+        app.directive('outer', function() {
+            return {
+
+                restrict: 'E',
+                template: '<div><h1>Outer</h1><inner></inner></div>',
+            }
+        });
+
+        app.directive('inner', function() {
+            return {
+
+                restrict: 'E',
+                template: '<div><h1>Inner</h1></div>',
+            }
+        });
+    </script>
+
+</body>
+
+</html>

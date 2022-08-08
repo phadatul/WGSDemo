@@ -1,0 +1,9 @@
+ng-disabled
+ng-show
+ng-hide
+
+invoke following fields on individual form elements
+$dirty : if the value of field has been changed   true/false
+$pristine: 
+$invalid : entered is not valid   true/false
+$error: tell you about exact error message 
